@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Same head as index.html -->
-      <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zenon Electrics | Powering Smarter, Safer, Sustainable Living</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Contact Us | Zenon Electrics</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Same header as index.html -->
-     <header>
+    <!-- Header Section -->
+    <header>
         <div class="header-top">
             <div class="container">
                 <div class="contact-info">
@@ -39,11 +38,11 @@
                 </button>
                 <nav id="mainNav">
                     <ul>
-                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="products.html">Products</a></li>
                         <li><a href="services.html">Services</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="contact.html" class="active">Contact</a></li>
                     </ul>
                 </nav>
                 <div class="header-buttons">
@@ -54,30 +53,131 @@
         </div>
     </header>
 
-    <!-- Contact Page Content -->
+    <!-- Page Hero -->
     <section class="page-hero">
         <div class="container">
-            <h1>Contact Us</h1>
+            <h1>Contact Zenon Electrics</h1>
+            <p>We're here to answer your questions and provide solutions</p>
         </div>
     </section>
 
-    <section class="contact-content">
+    <!-- Contact Section -->
+    <section class="contact">
         <div class="container">
             <div class="contact-grid">
                 <div class="contact-form">
+                    <h2 id="quote">Request a Quote</h2>
                     <form id="contactForm">
-                        <!-- Form fields -->
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Interested In</label>
+                            <select id="service" name="service">
+                                <option value="">Select a service</option>
+                                <option value="solar">Solar Solutions</option>
+                                <option value="automation">Home Automation</option>
+                                <option value="security">Security Systems</option>
+                                <option value="installation">Installation Services</option>
+                                <option value="maintenance">Maintenance & Repair</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Request</button>
                     </form>
                 </div>
                 <div class="contact-info">
-                    <!-- Contact details and map -->
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Our Location</h3>
+                            <p>123 Tech Avenue, Innovation City</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Phone Number</h3>
+                            <p>+123 456 7890</p>
+                            <p>Mon-Fri: 8:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email Address</h3>
+                            <p>info@zenonelectrics.com</p>
+                            <p>support@zenonelectrics.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Business Hours</h3>
+                            <p>Monday-Friday: 8:00 AM - 6:00 PM</p>
+                            <p>Saturday: 9:00 AM - 4:00 PM</p>
+                            <p>Sunday: Closed</p>
+                        </div>
+                    </div>
+                    <div class="map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.184133404902!2d-73.98757462403427!3d40.75802802831644!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1689874681233!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Same footer as index.html -->
-      <footer>
+    <!-- FAQ Section -->
+    <section class="services" style="background: var(--light);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Common questions about our products and services</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3><i class="fas fa-question-circle"></i> How long does installation take?</h3>
+                    <p>Installation time varies based on the project complexity. A typical home automation system takes 1-3 days, while solar installations may take 2-5 days. We provide a detailed timeline during our consultation.</p>
+                </div>
+                <div class="service-card">
+                    <h3><i class="fas fa-question-circle"></i> Do you offer maintenance plans?</h3>
+                    <p>Yes, we offer comprehensive maintenance plans for all our installations. Our plans include regular check-ups, priority service, and discounts on parts. Contact us for plan details and pricing.</p>
+                </div>
+                <div class="service-card">
+                    <h3><i class="fas fa-question-circle"></i> What warranties do you provide?</h3>
+                    <p>We provide product warranties as per manufacturer specifications, typically 1-5 years. Our workmanship warranty covers installation for 2 years. Extended warranties are available for most products.</p>
+                </div>
+                <div class="service-card">
+                    <h3><i class="fas fa-question-circle"></i> Can I integrate existing systems?</h3>
+                    <p>In most cases, yes! We specialize in integrating new solutions with existing systems. During our consultation, we'll assess your current setup and recommend the best integration approach.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col footer-about">
@@ -133,10 +233,11 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 Zenon Electrics. All Rights Reserved. | Designed with <i class="fas fa-heart"></i> for Smart Living</p>
+                <p>&copy; <span id="currentYear">2023</span> Zenon Electrics. All Rights Reserved. | Designed with <i class="fas fa-heart"></i> for Smart Living</p>
             </div>
         </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>

@@ -2,35 +2,49 @@
 const menuToggle = document.getElementById('menuToggle');
 const mainNav = document.getElementById('mainNav');
 
-menuToggle.addEventListener('click', () => {
-    mainNav.classList.toggle('active');
-    menuToggle.innerHTML = mainNav.classList.contains('active') ? 
-        '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-});
+if (menuToggle && mainNav) {
+    menuToggle.addEventListener('click', () => {
+        mainNav.classList.toggle('active');
+        menuToggle.innerHTML = mainNav.classList.contains('active') ? 
+            '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+}
 
-// Category Filtering
+// Tab functionality for categories
 const tabBtns = document.querySelectorAll('.tab-btn');
-const categoryCards = document.querySelectorAll('.category-card');
-
-tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        // Remove active class from all buttons
-        tabBtns.forEach(b => b.classList.remove('active'));
-        // Add active class to clicked button
-        btn.classList.add('active');
-        
-        const category = btn.dataset.category;
-        
-        // Show/hide cards based on category
-        categoryCards.forEach(card => {
-            if (category === 'all' || card.dataset.category === category) {
-                card.style.display = 'block';
-            } else {
-                card.style.display = 'none';
+if (tabBtns.length > 0) {
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all buttons
+            tabBtns.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            btn.classList.add('active');
+            
+            const category = btn.dataset.category;
+            
+            // Get the appropriate cards container
+            let cardsContainer;
+            if (document.querySelector('.categories-grid')) {
+                cardsContainer = document.querySelector('.categories-grid');
+            } else if (document.querySelector('.products-grid')) {
+                cardsContainer = document.querySelector('.products-grid');
+            }
+            
+            if (cardsContainer) {
+                const cards = cardsContainer.querySelectorAll('.category-card, .product-card');
+                
+                // Show/hide cards based on category
+                cards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
             }
         });
     });
-});
+}
 
 // Smooth scrolling for navigation
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -111,63 +125,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
     }
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // Mobile Menu Toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const mainNav = document.getElementById('mainNav');
-        
-        menuToggle.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
-            menuToggle.innerHTML = mainNav.classList.contains('active') ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-        });
-        
-        // Tab functionality
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const productCards = document.querySelectorAll('.product-card');
-        
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active class from all buttons
-                tabBtns.forEach(b => b.classList.remove('active'));
-                // Add active class to clicked button
-                btn.classList.add('active');
-                
-                const category = btn.dataset.category;
-                
-                // Show/hide cards based on category
-                productCards.forEach(card => {
-                    if (category === 'all' || card.dataset.category === category) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-        
+    
+    // Products page specific functionality
+    if (document.querySelector('.products-grid')) {
         // Add to cart functionality
         const addToCartBtns = document.querySelectorAll('.btn-primary');
         addToCartBtns.forEach(btn => {
@@ -221,3 +181,5 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         });
+    }
+});
