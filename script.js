@@ -183,3 +183,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', function(event) {
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
+    
+    if (mainNav && mainNav.classList.contains('active') && 
+        !menuToggle.contains(event.target) && 
+        !mainNav.contains(event.target)) {
+        mainNav.classList.remove('active');
+        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+    }
+});

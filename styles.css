@@ -23,6 +23,7 @@ body {
     color: var(--dark);
     background-color: var(--light);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5 {
@@ -92,11 +93,13 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .contact-info {
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 .contact-info a {
@@ -105,6 +108,7 @@ header {
     display: flex;
     align-items: center;
     gap: 6px;
+    white-space: nowrap;
 }
 
 .social-icons {
@@ -125,6 +129,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .logo {
@@ -211,6 +216,7 @@ nav ul li a:hover::after {
     font-size: 24px;
     cursor: pointer;
     color: var(--primary);
+    z-index: 101;
 }
 
 /* === HERO SECTION === */
@@ -971,6 +977,12 @@ footer {
 }
 
 /* === RESPONSIVE DESIGN === */
+@media (max-width: 1200px) {
+    .hero h1, .page-hero h1 {
+        font-size: 42px;
+    }
+}
+
 @media (max-width: 992px) {
     .hero h1, .page-hero h1 {
         font-size: 36px;
@@ -994,6 +1006,17 @@ footer {
     .header-top .container {
         flex-direction: column;
         gap: 10px;
+        text-align: center;
+    }
+    
+    .contact-info {
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .social-icons {
+        justify-content: center;
+        width: 100;
     }
     
     .mobile-menu-btn {
@@ -1020,6 +1043,7 @@ footer {
     nav ul {
         flex-direction: column;
         gap: 15px;
+        text-align: center;
     }
     
     .hero, .page-hero {
@@ -1028,27 +1052,47 @@ footer {
     
     .hero h1, .page-hero h1 {
         font-size: 32px;
+        padding: 0 15px;
     }
     
     .hero p, .page-hero p {
         font-size: 18px;
+        padding: 0 15px;
     }
     
     .hero-buttons, .cta-buttons {
         flex-direction: column;
         align-items: center;
+        padding: 0 15px;
     }
     
     .section-title h2 {
         font-size: 28px;
+        padding: 0 15px;
     }
     
     .header-buttons {
         display: none;
     }
+    
+    .categories-tabs {
+        justify-content: center;
+    }
+    
+    .product-actions {
+        flex-direction: column;
+    }
+    
+    .product-actions .btn {
+        width: 100%;
+    }
 }
 
 @media (max-width: 576px) {
+    .logo {
+        flex: 1;
+    }
+    
     .logo-text h1 {
         font-size: 20px;
     }
@@ -1061,7 +1105,124 @@ footer {
         font-size: 28px;
     }
     
+    .hero p, .page-hero p {
+        font-size: 16px;
+    }
+    
+    .section-title h2 {
+        font-size: 24px;
+    }
+    
+    .feature-card, .service-card, .testimonial-card {
+        padding: 20px;
+    }
+    
     .categories-tabs {
         justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 10px;
+    }
+    
+    .tab-btn {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+    
+    .product-content {
+        padding: 15px;
+    }
+    
+    .product-title {
+        font-size: 16px;
+    }
+    
+    .product-description {
+        font-size: 13px;
+        height: auto;
+    }
+    
+    .current-price {
+        font-size: 18px;
+    }
+    
+    .footer-grid {
+        gap: 30px;
+    }
+    
+    .footer-col {
+        text-align: center;
+    }
+    
+    .footer-col h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .footer-contact ul li {
+        justify-content: center;
+    }
+    
+    .footer-links ul li a {
+        justify-content: center;
+    }
+    
+    .footer-social .social-icons {
+        justify-content: center;
+    }
+    
+    .footer-hours p {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .contact-form {
+        padding: 20px;
+    }
+    
+    .contact-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .map {
+        height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-text h1 {
+        font-size: 18px;
+    }
+    
+    .hero h1, .page-hero h1 {
+        font-size: 24px;
+    }
+    
+    .hero p, .page-hero p {
+        font-size: 15px;
+    }
+    
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+    }
+    
+    .feature-card h3 {
+        font-size: 18px;
+    }
+    
+    .product-img {
+        height: 160px;
+    }
+    
+    .btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+    
+    .footer-bottom p {
+        font-size: 12px;
     }
 }
