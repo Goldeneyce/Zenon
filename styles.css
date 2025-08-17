@@ -192,16 +192,7 @@ nav ul li a:hover{
 .active {
     color: var(--secondary);
 }
-
-.active {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--secondary);
-} 
+ 
 
 nav ul li a::after {
     content: '';
