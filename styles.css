@@ -189,10 +189,15 @@ nav ul li a:hover{
     color: var(--secondary);
 }
 
-.active {
+.active a::after {
+     content: '';
+     position: absolute;
+     bottom: -5px;
+     left: 0;
+     height: 2px;
     color: var(--secondary);
-}
- 
+     width: 100%;
+} 
 
 nav ul li a::after {
     content: '';
