@@ -16,7 +16,7 @@ if (tabBtns.length > 0) {
     tabBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             // Remove active class from all buttons
-           // tabBtns.forEach(b => b.classList.remove('active'));
+            tabBtns.forEach(b => b.classList.remove('active'));
             // Add active class to clicked button
             btn.classList.add('active');
             
@@ -192,7 +192,7 @@ document.addEventListener('click', function(event) {
     if (mainNav && mainNav.classList.contains('active') && 
         !menuToggle.contains(event.target) && 
         !mainNav.contains(event.target)) {
-       // mainNav.classList.remove('active');
+        mainNav.classList.remove('active');
         menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
     }
 });
