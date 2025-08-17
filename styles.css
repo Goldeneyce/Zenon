@@ -190,7 +190,6 @@ nav ul li a:hover{
 }
 
 .active a::after {
-     content: '';
      position: absolute;
      bottom: -5px;
      left: 0;
