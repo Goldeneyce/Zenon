@@ -189,13 +189,8 @@ nav ul li a:hover{
     color: var(--secondary);
 }
 
-.active a::after {
-     position: absolute;
-     bottom: -5px;
-     left: 0;
-     height: 2px;
+.active {
     color: var(--secondary);
-     width: 100%;
 } 
 
 nav ul li a::after {
@@ -210,6 +205,10 @@ nav ul li a::after {
 }
 
 nav ul li a:hover::after {
+    width: 100%;
+}
+
+nav ul li .active::after {
     width: 100%;
 }
 
