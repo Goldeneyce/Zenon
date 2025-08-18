@@ -1,18 +1,40 @@
-// Mobile Menu Toggle
-const menuToggle = document.getElementById('menuToggle');
-const mainNav = document.getElementById('mainNav');
-
-if (menuToggle && mainNav) {
-    menuToggle.addEventListener('click', () => {
-        mainNav.classList.toggle('active');
+document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu functionality
+     const menuToggle = document.getElementById('menuToggle');
+ const mainNav = document.getElementById('mainNav');
+    
+    if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            mainNav.classList.toggle('active');
         menuToggle.innerHTML = mainNav.classList.contains('active') ? 
             '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-    });
-}
+            // Change icon based on menu state
+            const icon = mobileMenuToggle.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Close menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                const icon = mobileMenuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+    }
 
-// Tab functionality for categories
-const tabBtns = document.querySelectorAll('.tab-btn');
-if (tabBtns.length > 0) {
+ // Tab functionality for categories
+ const tabBtns = document.querySelectorAll('.tab-btn');
+ if (tabBtns.length > 0) {
     tabBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             // Remove active class from all buttons
@@ -44,10 +66,10 @@ if (tabBtns.length > 0) {
             }
         });
     });
-}
+ }
 
-// Smooth scrolling for navigation
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+ // Smooth scrolling for navigation
+ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
         
@@ -58,11 +80,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             });
         }
     });
-});
+ });
 
-// Form Validation
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
+ // Form Validation
+ const contactForm = document.getElementById('contactForm');
+ if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
@@ -101,9 +123,9 @@ if (contactForm) {
             contactForm.reset();
         }
     });
-}
+ }
 
-function showError(input, message) {
+ function showError(input, message) {
     const error = document.createElement('div');
     error.className = 'error';
     error.style.color = 'red';
@@ -111,15 +133,15 @@ function showError(input, message) {
     error.style.marginTop = '5px';
     error.textContent = message;
     input.parentNode.appendChild(error);
-}
+ }
 
-function isValidEmail(email) {
+ function isValidEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
-}
+ }
 
-// Initialize when page loads
-document.addEventListener('DOMContentLoaded', function() {
+ // Initialize when page loads
+ document.addEventListener('DOMContentLoaded', function() {
     // Set current year in footer
     const yearSpan = document.getElementById('currentYear');
     if (yearSpan) {
@@ -182,10 +204,10 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
-});
+ });
 
-// Close mobile menu when clicking outside
-document.addEventListener('click', function(event) {
+ // Close mobile menu when clicking outside
+ document.addEventListener('click', function(event) {
     const menuToggle = document.getElementById('menuToggle');
     const mainNav = document.getElementById('mainNav');
     
@@ -195,4 +217,6 @@ document.addEventListener('click', function(event) {
         mainNav.classList.remove('active');
         menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
     }
+ });
+
 });

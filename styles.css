@@ -717,6 +717,102 @@ nav ul li .active::after {
     color: var(--white);
 }
 
+
+/* ===== LIGHTBOX STYLES ===== */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+    display: flex;
+    opacity: 1;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 90%;
+    position: relative;
+    text-align: center;
+}
+
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 80vh;
+    border: 3px solid white;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+    animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: white;
+    font-size: 2.5rem;
+    cursor: pointer;
+    z-index: 10001;
+    transition: transform 0.3s ease;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-close:hover {
+    transform: rotate(90deg);
+    background: rgba(255, 0, 0, 0.7);
+}
+
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px;
+    z-index: 10001;
+}
+
+.lightbox-prev, .lightbox-next {
+    color: white;
+    font-size: 2.5rem;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+.lightbox-prev:hover, .lightbox-next:hover {
+    background: rgba(68, 125, 247, 0.8);
+}
+
+
 /* === ABOUT SECTION === */
 .about {
     padding: 80px 0;
@@ -1032,7 +1128,7 @@ footer {
     }
     
     nav {
-        position: fixed;
+       /* position: fixed;
         top: 140px;
         left: 0;
         width: 100%;
@@ -1041,7 +1137,18 @@ footer {
         padding: 20px;
         transform: translateY(-150%);
         transition: var(--transition);
-        z-index: 99;
+        z-index: 99; */
+
+         display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        flex-direction: column;
+        padding: 20px 0;
+        transition: var(--transition);
+        z-index: 100;
     }
     
     nav.active {
@@ -1232,5 +1339,18 @@ footer {
     
     .footer-bottom p {
         font-size: 12px;
+    }
+
+      
+    .lightbox-prev, .lightbox-next {
+        width: 50px;
+        height: 50px;
+        font-size: 2rem;
+    }
+    
+    .lightbox-close {
+        top: 15px;
+        right: 15px;
+        font-size: 2rem;
     }
 }
