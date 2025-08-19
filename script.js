@@ -40,28 +40,28 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Lightbox functionality
+    // Lightbox functionality - FIXED FOR PRODUCT PAGE
     const lightbox = document.querySelector('.lightbox');
     const lightboxImg = lightbox.querySelector('img');
     const lightboxClose = document.querySelector('.lightbox-close');
     const lightboxPrev = document.querySelector('.lightbox-prev');
     const lightboxNext = document.querySelector('.lightbox-next');
-    const imageContainers = document.querySelectorAll('.image-container');
+    const productImages = document.querySelectorAll('.product-img');
     
     let currentImageIndex = 0;
     let images = [];
     
-    // Collect all image URLs
-    imageContainers.forEach(container => {
-        images.push(container.dataset.full);
-    });
-    
-    // Open lightbox when an image is clicked
-    imageContainers.forEach((container, index) => {
-        container.addEventListener('click', () => {
-            currentImageIndex = index;
-            openLightbox(images[currentImageIndex]);
-        });
+    // Collect all product image URLs
+    productImages.forEach((container, index) => {
+        const img = container.querySelector('img');
+        if (img && img.src) {
+            images.push(img.src);
+            // Add click event to each product image
+            container.addEventListener('click', () => {
+                currentImageIndex = index;
+                openLightbox(images[currentImageIndex]);
+            });
+        }
     });
     
     // Open lightbox with specific image
@@ -129,12 +129,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 let cardsContainer;
                 if (document.querySelector('.categories-grid')) {
                     cardsContainer = document.querySelector('.categories-grid');
-                } else if (document.querySelector('.products-grid')) {
-                    cardsContainer = document.querySelector('.products-grid');
-                }
+                } 
                 
                 if (cardsContainer) {
-                    const cards = cardsContainer.querySelectorAll('.category-card, .product-card');
+                    const cards = cardsContainer.querySelectorAll('.category-card');
                     
                     // Show/hide cards based on category
                     cards.forEach(card => {
@@ -221,69 +219,66 @@ document.addEventListener('DOMContentLoaded', function() {
         return re.test(email);
     }
 
-    // Initialize when page loads
-    document.addEventListener('DOMContentLoaded', function() {
-        // Set current year in footer
-        const yearSpan = document.getElementById('currentYear');
-        if (yearSpan) {
-            yearSpan.textContent = new Date().getFullYear();
-        }
-        
-        // Products page specific functionality
-        if (document.querySelector('.products-grid')) {
-            // Add to cart functionality
-            const addToCartBtns = document.querySelectorAll('.btn-primary');
-            addToCartBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const productCard = this.closest('.product-card');
-                    const productName = productCard.querySelector('.product-title').textContent;
-                    
-                    // Create notification
-                    const notification = document.createElement('div');
-                    notification.textContent = `Added ${productName} to cart!`;
-                    notification.style.position = 'fixed';
-                    notification.style.bottom = '20px';
-                    notification.style.right = '20px';
-                    notification.style.backgroundColor = 'var(--secondary)';
-                    notification.style.color = 'white';
-                    notification.style.padding = '15px 25px';
-                    notification.style.borderRadius = '4px';
-                    notification.style.boxShadow = '0 4px 10px rgba(0,0,0,0.2)';
-                    notification.style.zIndex = '1000';
-                    notification.style.transition = 'transform 0.3s ease';
+    // Set current year in footer
+    const yearSpan = document.getElementById('currentYear');
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
+    
+    // Products page specific functionality
+    if (document.querySelector('.products-grid')) {
+        // Add to cart functionality
+        const addToCartBtns = document.querySelectorAll('.btn-primary');
+        addToCartBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const productCard = this.closest('.product-card');
+                const productName = productCard.querySelector('.product-title').textContent;
+                
+                // Create notification
+                const notification = document.createElement('div');
+                notification.textContent = `Added ${productName} to cart!`;
+                notification.style.position = 'fixed';
+                notification.style.bottom = '20px';
+                notification.style.right = '20px';
+                notification.style.backgroundColor = 'var(--secondary)';
+                notification.style.color = 'white';
+                notification.style.padding = '15px 25px';
+                notification.style.borderRadius = '4px';
+                notification.style.boxShadow = '0 4px 10px rgba(0,0,0,0.2)';
+                notification.style.zIndex = '1000';
+                notification.style.transition = 'transform 0.3s ease';
+                notification.style.transform = 'translateY(100px)';
+                
+                document.body.appendChild(notification);
+                
+                // Animate in
+                setTimeout(() => {
+                    notification.style.transform = 'translateY(0)';
+                }, 10);
+                
+                // Remove after 3 seconds
+                setTimeout(() => {
                     notification.style.transform = 'translateY(100px)';
-                    
-                    document.body.appendChild(notification);
-                    
-                    // Animate in
                     setTimeout(() => {
-                        notification.style.transform = 'translateY(0)';
-                    }, 10);
-                    
-                    // Remove after 3 seconds
-                    setTimeout(() => {
-                        notification.style.transform = 'translateY(100px)';
-                        setTimeout(() => {
-                            document.body.removeChild(notification);
-                        }, 300);
-                    }, 3000);
-                });
+                        document.body.removeChild(notification);
+                    }, 300);
+                }, 3000);
             });
-            
-            // Wishlist functionality
-            const wishlistBtns = document.querySelectorAll('.btn-icon');
-            wishlistBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const icon = this.querySelector('i');
-                    if (icon.classList.contains('far')) {
-                        icon.classList.replace('far', 'fas');
-                        icon.style.color = 'var(--secondary)';
-                    } else {
-                        icon.classList.replace('fas', 'far');
-                        icon.style.color = '';
-                    }
-                });
+        });
+        
+        // Wishlist functionality
+        const wishlistBtns = document.querySelectorAll('.btn-icon');
+        wishlistBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const icon = this.querySelector('i');
+                if (icon.classList.contains('far')) {
+                    icon.classList.replace('far', 'fas');
+                    icon.style.color = 'var(--secondary)';
+                } else {
+                    icon.classList.replace('fas', 'far');
+                    icon.style.color = '';
+                }
             });
-        }
-    });
+        });
+    }
 });

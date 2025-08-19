@@ -638,6 +638,7 @@ nav ul li .active::after {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .product-img img {
