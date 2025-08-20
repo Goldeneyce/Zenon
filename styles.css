@@ -104,8 +104,7 @@ header {
 
 .contact-info {
     display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .contact-info a {
@@ -114,7 +113,6 @@ header {
     display: flex;
     align-items: center;
     gap: 6px;
-    white-space: nowrap;
 }
 
 .social-icons {
