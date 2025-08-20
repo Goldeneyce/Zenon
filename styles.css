@@ -49,12 +49,7 @@ h1, h2, h3, h4, h5 {
     cursor: pointer;
     border: none;
     font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
-    min-height: 44px;
-    min-width: 44px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    
 }
 
 .btn-primary {
