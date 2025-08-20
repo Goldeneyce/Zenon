@@ -92,7 +92,7 @@ header {
     background-color: var(--primary);
     color: var(--white);
     padding: 8px 0;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 .header-top .container {
