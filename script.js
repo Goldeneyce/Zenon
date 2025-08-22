@@ -31,6 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (typeof window.FontAwesome === 'undefined') {
             closeButton.textContent = 'Close'; // Fallback if Font Awesome not loaded
         }
+        // Hide by default to prevent showing on desktop
+        closeButton.style.display = 'none';
         mainNav.appendChild(closeButton);
 
         // ARIA setup
@@ -40,11 +42,13 @@ document.addEventListener('DOMContentLoaded', function() {
         menuToggle.addEventListener('click', function() {
             mainNav.classList.add('active');
             menuToggle.setAttribute('aria-expanded', 'true');
+            closeButton.style.display = 'block'; // Show close button when menu opens
             document.body.style.overflow = 'hidden'; // Prevent scrolling
         });
 
         closeButton.addEventListener('click', function() {
             closeOverlay(mainNav, menuToggle);
+            closeButton.style.display = 'none'; // Hide close button when menu closes
         });
 
         // Close menu when clicking on a link
@@ -52,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
         navLinks.forEach(link => {
             link.addEventListener('click', function() {
                 closeOverlay(mainNav, menuToggle);
+                closeButton.style.display = 'none';
             });
         });
 
@@ -61,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 !mainNav.contains(event.target) &&
                 mainNav.classList.contains('active')) {
                 closeOverlay(mainNav, menuToggle);
+                closeButton.style.display = 'none';
             }
         }, 100));
     } else {
