@@ -36,60 +36,40 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
 
-    // Mobile menu functionality
-    const menuToggle = document.getElementById('menuToggle');
-    const mainNav = document.getElementById('mainNav');
+    // Mobile Navigation on homepage Toggle
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.querySelector('.nav-menu');
 
-    if (menuToggle && mainNav) {
-        // Create close button for mobile menu
-        const closeButton = document.createElement('button');
-        closeButton.className = 'mobile-close-btn';
-        closeButton.setAttribute('aria-label', 'Close menu');
-        closeButton.innerHTML = '<i class="fas fa-times"></i>'; // Assumes Font Awesome; fallback below
-        if (typeof window.FontAwesome === 'undefined') {
-            closeButton.textContent = 'Close'; // Fallback if Font Awesome not loaded
+if (hamburger) {
+    hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        hamburger.classList.toggle('active');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+    });
+}
+
+// Close mobile menu when a link is clicked
+document.querySelectorAll('.nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        hamburger.classList.remove('active');
+    });
+});
+
+// Set active navigation link based on current page
+document.addEventListener('DOMContentLoaded', function() {
+    const currentPage = window.location.pathname.split('/').pop();
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    
+    navLinks.forEach(link => {
+        const linkPage = link.getAttribute('href');
+        if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
+            link.classList.add('active');
         }
-        // Hide by default to prevent showing on desktop
-        closeButton.style.display = 'none';
-        mainNav.appendChild(closeButton);
+    });
+});
 
-        // ARIA setup
-        menuToggle.setAttribute('aria-expanded', 'false');
-        menuToggle.setAttribute('aria-controls', mainNav.id);
 
-        menuToggle.addEventListener('click', function() {
-            mainNav.classList.add('active');
-            menuToggle.setAttribute('aria-expanded', 'true');
-            closeButton.style.display = 'block'; // Show close button when menu opens
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
-        });
-
-        closeButton.addEventListener('click', function() {
-            closeOverlay(mainNav, menuToggle);
-            closeButton.style.display = 'none'; // Hide close button when menu closes
-        });
-
-        // Close menu when clicking on a link
-        const navLinks = mainNav.querySelectorAll('a'); // Scoped query for performance
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                closeOverlay(mainNav, menuToggle);
-                closeButton.style.display = 'none';
-            });
-        });
-
-        // Close menu when clicking outside (debounced for performance)
-        document.addEventListener('click', debounce(function(event) {
-            if (!menuToggle.contains(event.target) && 
-                !mainNav.contains(event.target) &&
-                mainNav.classList.contains('active')) {
-                closeOverlay(mainNav, menuToggle);
-                closeButton.style.display = 'none';
-            }
-        }, 100));
-    } else {
-        console.warn('Mobile menu elements are missing.');
-    }
 
     // Lightbox functionality - FIXED FOR PRODUCT PAGE
     const lightbox = document.querySelector('.lightbox');
