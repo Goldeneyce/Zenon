@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
 
-    // Mobile Navigation on homepage Toggle
+    // Mobile Navigation Toggle
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.querySelector('.mainNav');
 
